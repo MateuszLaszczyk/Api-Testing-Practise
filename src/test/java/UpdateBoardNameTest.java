@@ -1,4 +1,4 @@
-import BaseTest.BaseTest;
+import TestsInterfaces.BaseTest;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
 
@@ -8,15 +8,22 @@ public class UpdateBoardNameTest extends BaseTest {
 
     @Test
     void updateBoardName() {
-        String boardId = "68a5c23ae8c4ffcc97f02b1c";
+        boardId =
         given()
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
                 .queryParam("key", trelloKey)
                 .queryParam("token", trelloToken)
                 .queryParam("name", "Update Board Name")
-                .log().all()
+                .log().body()
                 .when()
-                .put("/boards/" + boardId);
+                .put("/boards/" + boardId)
+                .then()
+                .statusCode(200)
+                .extract().jsonPath().getString("id");
+
+        System.out.println("Updated Trello Board with Id: " + boardId);
+        boardId = null;
+
     }
 }

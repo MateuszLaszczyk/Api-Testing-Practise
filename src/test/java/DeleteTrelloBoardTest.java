@@ -1,4 +1,4 @@
-import BaseTest.BaseTest;
+import TestsInterfaces.BaseTest;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -35,6 +35,8 @@ public class DeleteTrelloBoardTest extends BaseTest {
                 .queryParam("token", trelloToken)
                 .when().get("/boards/{id}", boardId)
                 .then().statusCode(404);
+
+        boardId = null;
     }
 
 }
