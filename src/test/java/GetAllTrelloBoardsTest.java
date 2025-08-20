@@ -1,6 +1,4 @@
-package BaseTest;
-
-
+import BaseTest.BaseTest;
 import org.junit.jupiter.api.Test;
 
 
