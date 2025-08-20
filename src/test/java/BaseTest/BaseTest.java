@@ -20,7 +20,7 @@ public class BaseTest {
     @BeforeAll
     static void setup() throws IOException {
         Properties prop = new Properties();
-        prop.load(new FileInputStream("src/test/java/BaseTest/properties/secrets.properties"));
+        prop.load(new FileInputStream("src/test/java/properties/secrets.properties"));
 
 
         trelloKey = prop.getProperty("trello.key").trim();
