@@ -35,7 +35,6 @@ public class DeleteTrelloBoardTest extends BaseTest {
                 .queryParam("token", trelloToken)
                 .when().get("/boards/{id}", boardId)
                 .then().statusCode(404);
-
     }
 
 }
