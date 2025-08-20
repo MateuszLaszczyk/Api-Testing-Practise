@@ -1,11 +1,12 @@
-import BaseTest.BaseTest;
+import TestsInterfaces.ApiConfiguration;
+import TestsInterfaces.BaseTest;
 import org.junit.jupiter.api.Test;
+
 
 
 import static io.restassured.RestAssured.given;
 
-public class GetAllTrelloBoardsTest extends BaseTest {
-
+public class GetAllTrelloBoardsTest extends ApiConfiguration {
 
     @Test
     public void getAllTrelloBoards() {
