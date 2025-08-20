@@ -1,5 +1,6 @@
 import BaseTest.BaseTest;
 import io.restassured.http.ContentType;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -8,21 +9,32 @@ public class DeleteTrelloBoardTest extends BaseTest {
 
 
     @Test
-    public void deleteTrelloBoard() {
-        String boardId = "651c3f073cf46a4120e38571";
-                given()
-                        .contentType(ContentType.JSON)
-                        .accept(ContentType.JSON)
-                        .queryParam("token", trelloToken)
-                        .queryParam("key", trelloKey)
-                        .when()
-                        .delete("/boards/" + boardId)
-                        .then()
-                        .statusCode(200)
-                        .log().body()
-                        .extract()
-                        .jsonPath().getString("id");
+    @Tag("Destructive")
+    void deleteBoard_removesResource_andSubsequentGetIs404() {
+        // arrange: create
+        boardId = given()
+                .queryParam("key", trelloKey)
+                .queryParam("token", trelloToken)
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                .queryParam("name", "Delete Test Board")
+                .when().post("/boards")
+                .then().statusCode(200)
+                .extract().jsonPath().getString("id");
 
+        // act: delete
+        given()
+                .queryParam("key", trelloKey)
+                .queryParam("token", trelloToken)
+                .when().delete("/boards/{id}", boardId)
+                .then().statusCode(200);
+
+        // assert: GET after delete 404
+        given()
+                .queryParam("key", trelloKey)
+                .queryParam("token", trelloToken)
+                .when().get("/boards/{id}", boardId)
+                .then().statusCode(404);
     }
 
 }
