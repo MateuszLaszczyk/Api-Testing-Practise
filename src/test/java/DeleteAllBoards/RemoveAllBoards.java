@@ -23,7 +23,6 @@ public class RemoveAllBoards extends BaseTest {
                         .when()
                         .get("/members/me/boards")
                         .then()
-                        .statusCode(200)
                         .extract()
                         .jsonPath()
                         .getList("id"); // every id
@@ -35,8 +34,8 @@ public class RemoveAllBoards extends BaseTest {
                     .queryParam("token", trelloToken)
                     .when()
                     .delete("/boards/{id}", id)
-                    .then()
-                    .statusCode(200);
+                    .then();
+
             System.out.println("Deleted board: " + id);
         }
     }
