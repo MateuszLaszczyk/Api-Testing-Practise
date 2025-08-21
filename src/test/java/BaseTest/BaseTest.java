@@ -37,7 +37,7 @@ public class BaseTest {
         trelloToken = prop.getProperty("trello.token").trim();
         email = prop.getProperty("trello.email").trim();
         memberId = prop.getProperty("trello.memberId").trim();
-        testUserMemberId = prop.getProperty("trello.testUserMemberId");
+        testUserMemberId = prop.getProperty("trello.testUserMemberId").trim();
         userName = prop.getProperty("trello.userName").trim();
         RestAssured.baseURI = "https://api.trello.com/1";
 

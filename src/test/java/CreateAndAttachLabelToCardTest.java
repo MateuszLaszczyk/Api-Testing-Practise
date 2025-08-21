@@ -1,5 +1,11 @@
 import BaseTest.BaseTest;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.restassured.http.ContentType;
+import jdk.jfr.Description;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -9,6 +15,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class CreateAndAttachLabelToCardTest extends BaseTest {
 
     @Test
+    @Epic("Trello API")
+    @Feature("Label Management")
+    @DisplayName("Create a label and attach it to a card")
+    @Description("This test first creates a label on a board and then attaches it to a specific card.")
+    @Severity(SeverityLevel.NORMAL)
     public void testCreateLabelOnBoard() {
         // Create list
         String listId = given()
