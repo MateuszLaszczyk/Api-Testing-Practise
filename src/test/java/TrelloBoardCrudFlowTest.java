@@ -1,4 +1,4 @@
-import TestsInterfaces.BaseTest;
+import BaseTest.BaseTest;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package TestsInterfaces;
+package BaseTest;
 
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
@@ -21,6 +21,10 @@ public class BaseTest {
     protected static String trelloKey;
     protected static String trelloToken;
     protected static String boardId;
+    protected static String email;
+    protected static String memberId;
+    protected static String testUserMemberId;
+    protected static String userName;
 
     @BeforeAll
     static void setup() throws IOException {
@@ -31,7 +35,10 @@ public class BaseTest {
 
         trelloKey = prop.getProperty("trello.key").trim();
         trelloToken = prop.getProperty("trello.token").trim();
-
+        email = prop.getProperty("trello.email").trim();
+        memberId = prop.getProperty("trello.memberId").trim();
+        testUserMemberId = prop.getProperty("trello.testUserMemberId");
+        userName = prop.getProperty("trello.userName").trim();
         RestAssured.baseURI = "https://api.trello.com/1";
 
     }
