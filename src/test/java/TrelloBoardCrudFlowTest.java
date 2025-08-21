@@ -30,7 +30,7 @@ public class TrelloBoardCrudFlowTest extends BaseTest {
                         .contentType(ContentType.JSON)
                         .queryParam("key", trelloKey)
                         .queryParam("token", trelloToken)
-                        .queryParam("name", name)
+                        .queryParam("name", "CRUD Demo Updated")
                         .when()
                         .put("/boards/{id}", boardId)
                         .then()
